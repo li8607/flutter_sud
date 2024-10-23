@@ -17,6 +17,10 @@ A new Flutter plugin project.
   s.dependency 'Flutter'
   s.platform = :ios, '12.0'
 
+    # Add these lines to include the additional pods
+  s.dependency 'SudMGP', '~> 1.4.5'
+  s.dependency 'SudMGPWrapper', '~> 1.4.4'
+
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
   s.swift_version = '5.0'

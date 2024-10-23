@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:flutter/services.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'flutter_sud_method_channel.dart';
@@ -23,7 +26,41 @@ abstract class FlutterSudPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
+  Future<void> init(
+    String baseUrl,
+    String appId,
+    String appKey,
+    String token,
+    String userId, {
+    String languageCode = "zh-CN",
+    bool gameIsTestEnv = false,
+  }) {
+    throw UnimplementedError('init() has not been implemented.');
   }
+
+  Future<void> notifyStateChange(
+    String state, {
+    Map<String, dynamic> data = const <String, dynamic>{},
+  }) {
+    throw UnimplementedError('init() has not been implemented.');
+  }
+
+  Future<void> resume() {
+    throw UnimplementedError(
+        'didChangeAppLifecycleState() has not been implemented.');
+  }
+
+  Future<void> pause() {
+    throw UnimplementedError(
+        'didChangeAppLifecycleState() has not been implemented.');
+  }
+
+  void setMethodCallHandler(
+      Future<dynamic> Function(MethodCall call)? handler) {
+    throw UnimplementedError(
+        'didChangeAppLifecycleState() has not been implemented.');
+  }
+
+  Stream<String> get gameStateStream => throw UnimplementedError(
+      'gameStateStream not implemented on the current platform.');
 }

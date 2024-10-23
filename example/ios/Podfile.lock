@@ -1,0 +1,44 @@
+PODS:
+  - Flutter (1.0.0)
+  - flutter_sud (0.0.1):
+    - Flutter
+    - SudMGP (~> 1.4.5)
+    - SudMGPWrapper (~> 1.4.4)
+  - integration_test (0.0.1):
+    - Flutter
+  - MJExtension (3.4.2)
+  - SudMGP (1.4.5)
+  - SudMGPWrapper (1.4.4.3):
+    - MJExtension (~> 3.4.1)
+    - SudMGP
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - flutter_sud (from `.symlinks/plugins/flutter_sud/ios`)
+  - integration_test (from `.symlinks/plugins/integration_test/ios`)
+
+SPEC REPOS:
+  trunk:
+    - MJExtension
+    - SudMGP
+    - SudMGPWrapper
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  flutter_sud:
+    :path: ".symlinks/plugins/flutter_sud/ios"
+  integration_test:
+    :path: ".symlinks/plugins/integration_test/ios"
+
+SPEC CHECKSUMS:
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  flutter_sud: 8a82ce6fbcaba5eba58fb38e5daeb6ff82419196
+  integration_test: 252f60fa39af5e17c3aa9899d35d908a0721b573
+  MJExtension: e97d164cb411aa9795cf576093a1fa208b4a8dd8
+  SudMGP: 77e6bbe69f66ca75a905d135531973c9e48ae249
+  SudMGPWrapper: e32a038c5194529611c0e420ac91768f28781ccb
+
+PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
+
+COCOAPODS: 1.15.2
