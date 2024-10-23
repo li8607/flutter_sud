@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_sud/flutter_sud.dart';
@@ -31,11 +30,11 @@ class _MyAppState extends State<MyApp> {
                     onPressed: () async {
                       final flutterSudPlugin = FlutterSud();
                       await flutterSudPlugin.init(
-                        "https://test-app.pumpkin.date/",
-                        "1845726098887979009",
-                        "WPLRPXw4GB6uV3ILNGiID6Q4yxtZG1R0",
+                        "",
+                        "",
+                        "",
                         token,
-                        "6555f72a7cb0151745a5f944",
+                        "",
                         gameIsTestEnv: true,
                       );
                       showGameSheet(context);
@@ -59,10 +58,8 @@ class _MyAppState extends State<MyApp> {
       builder: (s) {
         return SudGameWidget(
           sudGameDelegate: PumpkinSudGameDelegate(),
-          roomId: "10000",
-          gameId: "1649319572314173442",
-          // gameId: "1765373047507173377",
-          //  gameId: "1649319572314173442",
+          roomId: "",
+          gameId: "",
         );
       },
     );
@@ -91,32 +88,13 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-String token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjY0ZGYzMmFjOGYxNTc3NTlhNzMwZmY2ZCIsInVzZXJuYW1lIjoiYWdnaWUiLCJuaWNrbmFtZSI6IkFnZ2llIiwid2FsbGV0IjoiMHgyMjA0NUM0RDVCNDgzNmYxRjE2ZENDQTFBOEMyRWI3YTc5MDY0NDQ3IiwiY29uY2lzZVVzZXJJZCI6IjEwMDAwMTM4IiwiaWF0IjoxNzI5NTY2NjQ1LCJleHAiOjE3MzIxNTg2NDV9.apNxBh_t_24_o1p40NRsFolnF0pesi4_zau1RTu9t0s";
+String token = "";
 
 class PumpkinSudGameDelegate extends SudGameDelegate {
   PumpkinSudGameDelegate({super.aspectRatio});
 
   @override
   Future<String> getSudGameCode() async {
-    try {
-      final dio = Dio();
-      final resp = await dio.post(
-        "https://test-app.pumpkin.date/game/sud/get_code",
-        data: {
-          "app_id": "1845726098887979009",
-        },
-        options: Options(
-          headers: {
-            "token": token,
-          },
-        ),
-      );
-      final code = resp.data["data"]["code"];
-      return code;
-    } catch (e, s) {
-      print("【Game】$e, $s");
-    }
     return "";
   }
 
@@ -127,7 +105,7 @@ class PumpkinSudGameDelegate extends SudGameDelegate {
 
   @override
   Future<num> getGameScore() async {
-    return 10000;
+    return 0;
   }
 
   @override
