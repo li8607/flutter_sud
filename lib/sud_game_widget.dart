@@ -89,6 +89,29 @@ class _SudGameWidgetState extends State<SudGameWidget>
             "score": score.toInt(),
           },
         );
+      } else if (state == SudMGPAPPState.MG_COMMON_USERS_INFO) {
+        final dataJson = eventMap["dataJson"] as String?;
+        if (dataJson == null || dataJson.isEmpty) {
+          return;
+        }
+        final dataMap = jsonDecode(dataJson);
+        final userIds =
+            (dataMap["uids"] as List).map((e) => e.toString()).toList();
+        List<GameUser> users = await widget.sudGameDelegate.getUsers(userIds);
+        FlutterSud().notifyStateChange(
+          SudMGPAPPState.APP_COMMON_USERS_INFO,
+          data: {
+            "infos": users
+                .map(
+                  (e) => {
+                    "uid": e.uid,
+                    "avatar": e.avatar,
+                    "name": e.name,
+                  },
+                )
+                .toList(),
+          },
+        );
       }
     } catch (e) {
       //
@@ -225,11 +248,14 @@ class SudMGPAPPState {
   static const MG_COMMON_GAME_SET_SCORE = "mg_common_game_set_score";
   static const MG_COMMON_DESTROY_GAME_SCENE = "mg_common_destroy_game_scene";
   static const MG_COMMON_HIDE_GAME_SCENE = "mg_common_hide_game_scene";
+  static const MG_COMMON_SELF_CLICK_GOLD_BTN = "mg_common_self_click_gold_btn";
+  static const MG_COMMON_USERS_INFO = "mg_common_users_info";
 
   static const APP_COMMON_UPDATE_GAME_MONEY = "app_common_update_game_money";
   static const APP_COMMON_GAME_CREATE_ORDER_RESULT =
       "app_common_game_create_order_result";
   static const APP_COMMON_GAME_SCORE = "app_common_game_score";
+  static const APP_COMMON_USERS_INFO = "app_common_users_info";
 }
 
 class SudGameDelegate {
@@ -258,4 +284,20 @@ class SudGameDelegate {
   }
 
   Future<void> onGameStateChange(BuildContext context, String state) async {}
+
+  Future<List<GameUser>> getUsers(List<String> userIds) async {
+    return [];
+  }
+}
+
+class GameUser {
+  final String uid;
+  final String avatar;
+  final String name;
+
+  const GameUser({
+    required this.uid,
+    required this.avatar,
+    required this.name,
+  });
 }
