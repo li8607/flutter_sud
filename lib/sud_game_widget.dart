@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +13,13 @@ class SudGameWidget extends StatefulWidget {
     this.sudGameDelegate = const SudGameDelegate(),
     required this.roomId,
     required this.gameId,
+    this.onGameClosed,
   });
 
   final SudGameDelegate sudGameDelegate;
   final String roomId;
   final String gameId;
+  final VoidCallback? onGameClosed;
 
   @override
   State<SudGameWidget> createState() => _SudGameWidgetState();
@@ -60,10 +61,7 @@ class _SudGameWidgetState extends State<SudGameWidget>
       } else if (state == SudMGPAPPState.MG_COMMON_DESTROY_GAME_SCENE ||
           state == SudMGPAPPState.MG_COMMON_HIDE_GAME_SCENE) {
         // 关闭游戏
-        final context = this.context;
-        if (context.mounted) {
-          Navigator.pop(context);
-        }
+        widget.onGameClosed?.call();
       } else if (state == SudMGPAPPState.MG_COMMON_GAME_CREATE_ORDER) {
         // 创建订单
         final dataJson = eventMap["dataJson"] as String?;
@@ -113,7 +111,7 @@ class _SudGameWidgetState extends State<SudGameWidget>
           },
         );
       }
-    } catch (e) {
+    } catch (e, s) {
       //
     }
   }
