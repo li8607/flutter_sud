@@ -28,6 +28,7 @@ class SudGameWidget extends StatefulWidget {
 class _SudGameWidgetState extends State<SudGameWidget>
     with WidgetsBindingObserver, AutomaticKeepAliveClientMixin {
   StreamSubscription? gameStateStreamSubscription;
+  String? _sudGameCode;
 
   @override
   void initState() {
@@ -37,7 +38,13 @@ class _SudGameWidgetState extends State<SudGameWidget>
     WidgetsBinding.instance.addObserver(this);
     FlutterSud().setMethodCallHandler((call) async {
       if (call.method == "getCode") {
-        return getSudGameCode();
+        final sudGameCode = await getSudGameCode();
+        if (_sudGameCode == null && sudGameCode.isNotEmpty) {
+          setState(() {
+            _sudGameCode = sudGameCode;
+          });
+        }
+        return sudGameCode;
       }
     });
   }
@@ -195,12 +202,15 @@ class _SudGameWidgetState extends State<SudGameWidget>
 
     child = Stack(
       children: [
-        Center(
-          child: SizedBox(
-            width: 45,
-            height: 45,
-            child: CircularProgressIndicator(
-              color: Colors.white.withOpacity(0.4),
+        Offstage(
+          offstage: _sudGameCode != null,
+          child: Center(
+            child: SizedBox(
+              width: 45,
+              height: 45,
+              child: CircularProgressIndicator(
+                color: Colors.white.withOpacity(0.4),
+              ),
             ),
           ),
         ),
