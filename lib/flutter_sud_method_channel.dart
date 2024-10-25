@@ -15,19 +15,15 @@ class MethodChannelFlutterSud extends FlutterSudPlatform {
 
   @override
   Future<void> init(
-    String baseUrl,
     String appId,
     String appKey,
-    String token,
     String userId, {
     String languageCode = "zh-CN",
     bool gameIsTestEnv = false,
   }) async {
     await _method.invokeMethod('init', <String, dynamic>{
-      'baseUrl': baseUrl,
       'appId': appId,
       'appKey': appKey,
-      'token': token,
       'userId': userId,
       'languageCode': languageCode,
       'gameIsTestEnv': gameIsTestEnv,

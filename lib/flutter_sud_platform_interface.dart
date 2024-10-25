@@ -27,10 +27,8 @@ abstract class FlutterSudPlatform extends PlatformInterface {
   }
 
   Future<void> init(
-    String baseUrl,
     String appId,
     String appKey,
-    String token,
     String userId, {
     String languageCode = "zh-CN",
     bool gameIsTestEnv = false,

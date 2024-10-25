@@ -33,8 +33,6 @@ class _MyAppState extends State<MyApp> {
                         "",
                         "",
                         "",
-                        token,
-                        "",
                         gameIsTestEnv: true,
                       );
                       showGameSheet(context);
@@ -87,8 +85,6 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
-String token = "";
 
 class PumpkinSudGameDelegate extends SudGameDelegate {
   PumpkinSudGameDelegate({super.aspectRatio});

@@ -10,23 +10,16 @@ class FlutterSud {
 
   FlutterSud._();
 
-  String? token;
-
   Future<void> init(
-    String baseUrl,
     String appId,
     String appKey,
-    String token,
     String userId, {
     String languageCode = "zh-CN",
     bool gameIsTestEnv = false,
   }) async {
-    this.token = token;
     await FlutterSudPlatform.instance.init(
-      baseUrl,
       appId,
       appKey,
-      token,
       userId,
       languageCode: languageCode,
       gameIsTestEnv: gameIsTestEnv,

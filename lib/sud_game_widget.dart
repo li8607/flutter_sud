@@ -111,7 +111,7 @@ class _SudGameWidgetState extends State<SudGameWidget>
           },
         );
       }
-    } catch (e, s) {
+    } catch (e) {
       //
     }
   }
