@@ -70,6 +70,8 @@ class SudGameManager {
             // 加载游戏
             // Load the game
             self?.loadMG(configModel, code: code)
+            SudMGP.getCfg().setEnableAudioSessionActive(false)
+            SudMGP.getCfg().setEnableAudioSessionCategory(false)
         }
     }
     
