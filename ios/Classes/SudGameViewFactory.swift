@@ -32,6 +32,8 @@ class SudGameView: NSObject, FlutterPlatformView {
     private var _args: Any?
     private var _sudGameManager: SudGameManager?
     
+
+    
     init(
         frame: CGRect,
         viewIdentifier viewId: Int64,

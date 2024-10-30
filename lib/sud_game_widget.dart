@@ -135,6 +135,7 @@ class _SudGameWidgetState extends State<SudGameWidget>
 
   @override
   void dispose() {
+    FlutterSud().destroy();
     gameStateStreamSubscription?.cancel();
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();

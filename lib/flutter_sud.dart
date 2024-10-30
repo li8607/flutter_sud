@@ -43,6 +43,10 @@ class FlutterSud {
   Future<void> pause() async {
     await FlutterSudPlatform.instance.pause();
   }
+  
+  Future<void> destroy() async {
+    await FlutterSudPlatform.instance.destroy();
+  }
 
   void setMethodCallHandler(
       Future<dynamic> Function(MethodCall call)? handler) {

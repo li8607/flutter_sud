@@ -52,6 +52,11 @@ class MethodChannelFlutterSud extends FlutterSudPlatform {
   }
 
   @override
+  Future<void> destroy() async {
+    await _method.invokeMethod('destroy');
+  }
+
+  @override
   void setMethodCallHandler(
       Future<dynamic> Function(MethodCall call)? handler) {
     _method.setMethodCallHandler(handler);

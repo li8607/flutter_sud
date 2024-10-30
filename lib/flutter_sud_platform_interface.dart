@@ -53,6 +53,11 @@ abstract class FlutterSudPlatform extends PlatformInterface {
         'didChangeAppLifecycleState() has not been implemented.');
   }
 
+  Future<void> destroy() {
+    throw UnimplementedError(
+        'didChangeAppLifecycleState() has not been implemented.');
+  }
+
   void setMethodCallHandler(
       Future<dynamic> Function(MethodCall call)? handler) {
     throw UnimplementedError(

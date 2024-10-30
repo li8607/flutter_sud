@@ -64,6 +64,11 @@ public class FlutterSudPlugin implements FlutterPlugin, MethodCallHandler, Event
                     GlobalData.sudGameViewModel.onPause();
                 }
                 result.success(true);
+            } else if (call.method.equals("destroy")) {
+                if (GlobalData.sudGameViewModel != null) {
+                    GlobalData.sudGameViewModel.onDestroy();
+                }
+                result.success(true);
             } else {
                 result.notImplemented();
             }

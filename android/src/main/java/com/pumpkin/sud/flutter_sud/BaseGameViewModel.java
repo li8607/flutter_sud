@@ -535,13 +535,29 @@ public abstract class BaseGameViewModel implements SudFSMMGListener {
     public void onPause() {
         // playMG和pauseMG要配对
         // playMG and pauseMG should be paired.
-        sudFSTAPPDecorator.pauseMG();
+        try {
+            sudFSTAPPDecorator.pauseMG();
+        }catch (Exception e) {
+
+        }
     }
 
     public void onResume() {
         // playMG和pauseMG要配对
         // playMG and pauseMG should be paired.
-        sudFSTAPPDecorator.playMG();
+        try {
+            sudFSTAPPDecorator.playMG();
+        }catch (Exception e) {
+
+        }
+    }
+
+    public void onDestroy() {
+        try {
+            sudFSTAPPDecorator.destroyMG();
+        }catch (Exception e) {
+
+        }
     }
 
     /**

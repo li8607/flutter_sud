@@ -52,6 +52,9 @@ public class FlutterSudPlugin: NSObject, FlutterPlugin, FlutterStreamHandler {
         case "pause":
             GlobalData.sudGameEventHandler?.sudFSTAPPDecorator.pauseMG()
             result(true)
+        case "destroy":
+            GlobalData.sudGameEventHandler?.sudFSTAPPDecorator.destroyMG()
+            result(true)
         default:
             result(true)
         }
