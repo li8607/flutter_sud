@@ -1,5 +1,6 @@
 import Flutter
 import UIKit
+import SudMGP
 
 public class FlutterSudPlugin: NSObject, FlutterPlugin, FlutterStreamHandler {
     
@@ -13,6 +14,8 @@ public class FlutterSudPlugin: NSObject, FlutterPlugin, FlutterStreamHandler {
         registrar.addMethodCallDelegate(instance, channel: methodChannel)
         
         eventChannel.setStreamHandler(instance)
+        SudMGP.getCfg().setEnableAudioSessionActive(false)
+        SudMGP.getCfg().setEnableAudioSessionCategory(false)
         
         let factory = SudGameViewFactory(messenger: registrar.messenger())
         registrar.register(factory, withId: "SudGame")
